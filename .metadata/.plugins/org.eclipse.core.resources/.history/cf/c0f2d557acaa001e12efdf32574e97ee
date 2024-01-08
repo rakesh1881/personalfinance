@@ -1,0 +1,38 @@
+package com.flightbooking.form;
+
+import java.awt.Dimension;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+
+public class MainMenu extends JFrame{
+
+	JPanel mainMenuPanel;
+	JButton btnMaster;
+	
+	public MainMenu() {
+		
+		setTitle("Main Menu");
+		setPreferredSize(new Dimension(1000,600));
+		setBounds(0, 0, 1000, 600);
+		setLayout(null);
+		setLocationRelativeTo(null);
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		createMenus();
+		setVisible(true);
+		
+	}
+
+	private void createMenus() {
+		mainMenuPanel= new JPanel();
+		mainMenuPanel.setBounds(0,0,1000,600);
+		mainMenuPanel.setLayout(null);
+		add(mainMenuPanel);
+		
+		btnMaster = new JButton();
+		btnMaster.setBounds(10, 10, 180, 180);
+		mainMenuPanel.add(btnMaster);
+	}
+
+}

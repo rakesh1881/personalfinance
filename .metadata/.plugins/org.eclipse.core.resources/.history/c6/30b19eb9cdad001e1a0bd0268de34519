@@ -1,0 +1,16 @@
+package com.flightbooking.common;
+
+import javax.swing.JButton;
+
+public class RkButton extends JButton {
+	
+	
+	
+	public RkButton() {
+		
+		
+	}
+	
+	
+
+}

@@ -1,0 +1,175 @@
+package com.personalfinance.common;
+
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
+
+import com.personalfinance.form.MainMenu;
+
+public class LoginPage extends JFrame {
+
+	JPanel loginPanel;
+	JLabel userNameLabel, passwordLabel,logo;
+	RkButton loginButton, signUpButton;
+	JTextField userNameText;
+	JPasswordField passwordField;
+	MainMenu mainmenu;
+	Color bgColor= new Color(114,186,240);
+	Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
+
+	public LoginPage() {
+
+		setTitle("LOGIN PAGE");
+		setPreferredSize(new Dimension(656, 383));
+		setBounds(0, 0, 656, 383);
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		setLayout(null);
+		setLocationRelativeTo(null);
+		setUndecorated(true);
+		loginformdetails();
+		actionlisteners();
+		
+		setVisible(true);
+
+	}
+
+	private void actionlisteners() {
+
+		userNameText.addKeyListener(new KeyAdapter() {
+
+			@Override
+
+			public void keyPressed(KeyEvent e) {
+				if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+					if (userNameText.getText().equalsIgnoreCase("") || userNameText.getText().equalsIgnoreCase(null)) {
+						JOptionPane.showMessageDialog(null, "Enter the User Name", "Invalid User Name",
+								JOptionPane.ERROR_MESSAGE);
+					} else {
+						passwordField.requestFocus();
+					}
+				}
+
+				super.keyPressed(e);
+			}
+		});
+
+		passwordField.addKeyListener(new KeyAdapter() {
+
+			@Override
+
+			public void keyPressed(KeyEvent e) {
+				if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+					if (passwordField.getPassword().length == 0) {
+						JOptionPane.showMessageDialog(null, "Enter the Password", "Invalid Password",
+								JOptionPane.ERROR_MESSAGE);
+					} else {
+						loginButton.requestFocus();
+					}
+				}
+
+				super.keyPressed(e);
+			}
+		});
+
+		loginButton.addKeyListener(new KeyAdapter() {
+
+			@Override
+
+			public void keyPressed(KeyEvent e) {
+				if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+					
+					if (userNameText.getText().equalsIgnoreCase("rak") && comparepassword()) {
+						mainmenu = new MainMenu();
+						setVisible(false);
+						mainmenu.setVisible(true);
+					} else {
+						JOptionPane.showMessageDialog(null, "Enter Valid Credentials", "Invalid Credentials",
+								JOptionPane.ERROR_MESSAGE);
+						userNameText.requestFocus();
+					}
+					
+				}
+
+				super.keyPressed(e);
+			}
+		});
+
+		loginButton.addActionListener((ActionEvent a) -> {
+
+			if (userNameText.getText().equalsIgnoreCase("rak") && comparepassword()) {
+				mainmenu = new MainMenu();
+				setVisible(false);
+				mainmenu.setVisible(true);
+			} else {
+				JOptionPane.showMessageDialog(null, "Enter Valid Credentials", "Invalid Credentials",
+						JOptionPane.ERROR_MESSAGE);
+				userNameText.requestFocus();
+			}
+
+		});
+
+	}
+
+	protected boolean comparepassword() {
+		char[] a = passwordField.getPassword();
+		String text = new String(a);
+
+		if (text.equals("123"))
+			return true;
+		else
+			return false;
+	}
+
+	private void loginformdetails() {
+
+		int x = 200, y = 100;
+
+		loginPanel = new JPanel();
+		loginPanel.setBounds(0, 0, 656, 383);
+		loginPanel.setLayout(null); 
+		loginPanel.setBackground(bgColor);
+		add(loginPanel);
+
+		
+		logo = new JLabel("RK FINANCE");
+		int len=logo.getText().length();
+		logo.setBounds(656-len/2, y, x, y);
+		userNameLabel = new JLabel("User Name");
+		userNameLabel.setBounds(x, y, 100, 20);
+		loginPanel.add(userNameLabel);
+
+		userNameText = new JTextField();
+		userNameText.setBounds(x + 100, y, 100, 20);
+		userNameText.requestFocus();
+		loginPanel.add(userNameText);
+
+		passwordLabel = new JLabel("Password");
+		passwordLabel.setBounds(x, y += 30, 100, 20);
+		loginPanel.add(passwordLabel);
+
+		passwordField = new JPasswordField();
+		passwordField.setBounds(x + 100, y, 100, 20);
+		loginPanel.add(passwordField);
+
+		signUpButton = new RkButton("Exit");
+		signUpButton.setBounds(x, y += 40, 80, 20);
+		loginPanel.add(signUpButton);
+
+		loginButton = new RkButton("Login");
+		loginButton.setBounds(x + 100, y, 80, 20);
+		loginPanel.add(loginButton);
+
+	}
+
+}

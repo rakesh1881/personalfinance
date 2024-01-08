@@ -1,0 +1,59 @@
+package com.flightbooking.common;
+
+import java.awt.Color;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+
+import javax.swing.JButton;
+
+public class RkButton extends JButton {
+	
+	private Color hovercolorbutton;
+	private Color pressedbutton;
+	
+	
+	public RkButton(String text) {
+		 super(text);
+		 setContentAreaFilled(false);
+		 setFocusPainted(false);
+		 setBorderPainted(false);
+		 
+        setBackground(Color.black);
+        setForeground(Color.WHITE);
+        hovercolorbutton = new Color(70, 70, 70);
+        pressedbutton = new Color(100, 100, 100);
+        
+        
+        addMouseListener(new MouseAdapter() {
+        	@Override
+        	public void mouseEntered(MouseEvent e) {
+        		setBackground(hovercolorbutton);
+        		super.mouseEntered(e);
+        	}
+        	
+        	@Override
+        	public void mouseExited(MouseEvent e) {
+        		setBackground(Color.white);
+        		super.mouseExited(e);
+        	}
+        	
+        	@Override
+        	public void mousePressed(MouseEvent e) {
+        		setBackground(pressedbutton);
+        		super.mousePressed(e);
+        	}
+        	@Override
+        	public void mouseReleased(MouseEvent e) {
+        		setBackground(Color.white);
+        		super.mouseReleased(e);
+        	}
+		});
+        
+        
+        
+		
+	}
+	
+	
+
+}

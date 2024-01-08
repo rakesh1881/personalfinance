@@ -1,0 +1,14 @@
+package com.flightbooking.common;
+
+public class FullFrameSet {
+	
+	int a ;
+	int j=a+1;
+	
+	public FullFrameSet() {
+		System.out.println(j);
+	}
+	
+	
+
+}

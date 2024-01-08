@@ -1,0 +1,14 @@
+package com.flightbooking.common;
+
+public class FullFrameSet {
+	
+	
+	
+	public FullFrameSet() {
+		
+		
+	}
+	
+	
+
+}

@@ -1,0 +1,71 @@
+package com.flightbooking.common;
+
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+
+import javax.swing.JButton;
+
+public class RkButton extends JButton {
+	
+	private Color hovercolorbutton;
+	private Color pressedbutton;
+	
+	
+	public RkButton(String text) {
+		 super(text);
+		 setContentAreaFilled(false);
+		 setFocusPainted(false);
+		 setBorderPainted(false);
+		 
+        setBackground(Color.black);
+        setForeground(Color.WHITE);
+        hovercolorbutton = new Color(70, 70, 70);
+        pressedbutton = new Color(100, 100, 100);
+        
+        
+        addMouseListener(new MouseAdapter() {
+        	@Override
+        	public void mouseEntered(MouseEvent e) {
+        		setBackground(hovercolorbutton);
+        		super.mouseEntered(e);
+        	}
+        	
+        	@Override
+        	public void mouseExited(MouseEvent e) {
+        		setBackground(Color.black);
+        		super.mouseExited(e);
+        	}
+        	
+        	@Override
+        	public void mousePressed(MouseEvent e) {
+        		setBackground(pressedbutton);
+        		super.mousePressed(e);
+        	}
+        	@Override
+        	public void mouseReleased(MouseEvent e) {
+        		setBackground(Color.black);
+        		super.mouseReleased(e);
+        	}
+		});
+        
+        
+        
+		
+	}
+	  protected void paintComponent(Graphics g) {
+	        if (getModel().isPressed()) {
+	            g.setColor(pressedbutton);
+	        } else if (getModel().isRollover()) {
+	            g.setColor(hovercolorbutton);
+	        } else {
+	            g.setColor(getBackground());
+	        }
+	        g.fillRoundRect(0, 0, getWidth(), getHeight(), 10, 10);
+	        super.paintComponent(g);
+	    }
+
+	
+
+}

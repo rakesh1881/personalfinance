@@ -1,0 +1,30 @@
+package com.flightbooking.common;
+
+import java.awt.*;
+import java.awt.geom.AffineTransform;
+import java.awt.image.BufferedImage;
+import javax.swing.*;
+public class FullFrameSet {
+	
+	
+	
+	public FullFrameSet() {
+		
+	    ImageIcon baseIcon = new ImageIcon("src/images/mentalist-logo.png");
+        ImageIcon reflectIcon = new ImageIcon("src/images/mentalist-logo.png");
+        JLabel baseLabel = new JLabel(baseIcon);
+        JLabel reflectLabel = new JLabel();
+
+        Graphics2D g2D = (Graphics2D) reflectIcon.getImage().getGraphics();
+        g2D.rotate(180);
+        reflectLabel.setIcon(reflectIcon);
+
+
+        this.add(reflectLabel);
+        this.setVisible(true);
+        this.pack();
+	}
+	
+	
+
+}
