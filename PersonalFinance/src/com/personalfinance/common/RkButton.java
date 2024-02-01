@@ -15,47 +15,66 @@ import javax.swing.JButton;
 
 public class RkButton extends JButton {
 	
-	public Color hovercolorbutton;
-	private Color pressedbutton;
+	public Color hoverColorBtn;
+	private Color pressedBtn;
     private int borderRadius = 10;
     private int borderThickness = 2;
-    Color backcolor =new Color(114,186,240);
+    Color backColor;
 	
-	
-	public RkButton(String text) {
+
+	public RkButton(Color backColor,Color hoverColor,Color pressedColor,String text) {
+		
 		 super(text);
 		 setContentAreaFilled(false);
 		 setFocusPainted(false);
 		 setBorderPainted(false);
 		 
 		 
-        setBackground(backcolor);
+			 
+       setBackground	(backColor);
+       setForeground(Color.WHITE);
+       this.backColor=backColor;
+       this.hoverColorBtn = hoverColor;
+       this.pressedBtn = pressedColor;
+       listerners();	
+	}  
+    
+	public RkButton(String text) {
+		 super(text);
+		 setContentAreaFilled(false);
+		 setFocusPainted(false);
+		 setBorderPainted(false);
+			 
+        setBackground(backColor);
         setForeground(Color.WHITE);
-        hovercolorbutton = new Color(71,117,150);
-        pressedbutton = new Color(100, 100, 100);
-        
-        
+        backColor=new Color(114,186,240);
+        hoverColorBtn = new Color(71,117,150);
+        pressedBtn = new Color(100, 100, 100);
+        listerners();	
+	}
+	
+	private void listerners() {
         addMouseListener(new MouseAdapter() {
         	@Override
         	public void mouseEntered(MouseEvent e) {
-        		setBackground(hovercolorbutton);
+        		setBackground(hoverColorBtn);
         		super.mouseEntered(e);
         	}
         	
         	@Override
         	public void mouseExited(MouseEvent e) {
-        		setBackground(backcolor);
+        		setBackground(backColor);
         		super.mouseExited(e);
         	}
         	
         	@Override
         	public void mousePressed(MouseEvent e) {
-        		setBackground(pressedbutton);
+        		setBackground(pressedBtn);
         		super.mousePressed(e);
         	}
         	@Override
         	public void mouseReleased(MouseEvent e) {
-        		setBackground(backcolor);
+        		setBackground(backColor);
         		super.mouseReleased(e);
         	}
       
@@ -65,19 +84,17 @@ public class RkButton extends JButton {
 			
 			@Override
 			public void focusLost(FocusEvent e) {
-				setBackground(backcolor);
+				setBackground(backColor);
+				
 				
 			}
 			
 			@Override
 			public void focusGained(FocusEvent e) {
-			setBackground(hovercolorbutton);
+			setBackground(hoverColorBtn);
 				
 			}
 		});
-        
-        
-		
 	}
 	  protected void paintComponent(Graphics g) {
 	    
@@ -85,11 +102,11 @@ public class RkButton extends JButton {
 	        g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 
 	        if (getModel().isPressed()) {
-	            g2d.setColor(pressedbutton);
+	            g2d.setColor(pressedBtn);
 	        } else if (getModel().isRollover()||hasFocus()) {
-	            g2d.setColor(hovercolorbutton);
+	            g2d.setColor(hoverColorBtn);
 	        }  else {
-	            g2d.setColor(backcolor);
+	            g2d.setColor(backColor);
 	        }
 	        
 	    
@@ -107,7 +124,7 @@ public class RkButton extends JButton {
 	        g2d.drawString(getText(), x, y);
 
 	        g2d.setStroke(new BasicStroke(borderThickness));
-	        g2d.setColor(backcolor);
+	        g2d.setColor(backColor);
 	        g2d.drawRoundRect(borderThickness / 2, borderThickness / 2, width - borderThickness, height - borderThickness, borderRadius, borderRadius);
 
 	        g2d.dispose();

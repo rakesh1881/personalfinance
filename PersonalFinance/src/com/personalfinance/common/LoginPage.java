@@ -27,6 +27,7 @@ public class LoginPage extends JFrame {
 	MainMenu mainmenu;
 	Color bgColor= new Color(114,186,240);
 	Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
+	Keylisteners keyLitener;
 
 	public LoginPage() {
 
@@ -39,9 +40,21 @@ public class LoginPage extends JFrame {
 		setUndecorated(true);
 		loginformdetails();
 		actionlisteners();
+		//keyListeners();
 		
 		setVisible(true);
 
+	}
+
+	private void keyListeners() {
+		
+//		keyLitener = new Keylisteners(userNameText, passwordField);
+//		keyLitener = new Keylisteners(passwordField, loginButton);
+//		keyLitener = new Keylisteners(loginButton, exitbutton);
+//		keyLitener = new Keylisteners(loginButton, userNameText);
+		
+		
+		
 	}
 
 	private void actionlisteners() {
@@ -108,9 +121,17 @@ public class LoginPage extends JFrame {
 		loginButton.addActionListener((ActionEvent a) -> {
 
 			if (userNameText.getText().equalsIgnoreCase("rak") && comparepassword()) {
-				mainmenu = new MainMenu();
-				setVisible(false);
-				mainmenu.setVisible(true);
+				
+//				mainmenu = new MainMenu();
+//				setVisible(false);
+//				mainmenu.setVisible(true);
+				try {
+				ProcessBuilder processbuilder = new ProcessBuilder("java","-jar","C:/Users/Rocky/Desktop/FlightBook.jar");
+				processbuilder.start();
+				System.exit(0);
+				}catch (Exception e) {
+					// TODO: handle exception
+				}
 			} else {
 				JOptionPane.showMessageDialog(null, "Enter Valid Credentials", "Invalid Credentials",
 						JOptionPane.ERROR_MESSAGE);
@@ -118,6 +139,11 @@ public class LoginPage extends JFrame {
 			}
 
 		});
+		
+		
+//		setVisible(false);
+//		action = new Keylisteners(loginButton, mainmenu);
+		
 		
 		exitbutton.addActionListener((ActionEvent a) -> {
 
