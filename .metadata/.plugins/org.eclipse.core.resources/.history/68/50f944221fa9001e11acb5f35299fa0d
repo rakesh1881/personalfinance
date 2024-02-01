@@ -1,9 +1,0 @@
-package com.flightbooking.main;
-
-public class ApplicationStart {
-	
-	public static void main(String[] args) {
-
-	}
-
-}

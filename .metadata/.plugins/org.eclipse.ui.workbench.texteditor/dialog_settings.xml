@@ -1,18 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value="Code"/>
+		<item key="selection" value="Expense"/>
 		<item key="wrap" value="true"/>
-		<item key="casesensitive" value="false"/>
+		<item key="casesensitive" value="true"/>
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
-			<item value="path"/>
-			<item value="codeso"/>
-			<item value="code"/>
+			<item value="Income"/>
+			<item value="income"/>
+			<item value="// TODO Auto-generated method stub"/>
+			<item value="Expense"/>
+			<item value="expense"/>
+			<item value="connection"/>
+			<item value="expenseModel"/>
+			<item value="lstExpenseModel"/>
+			<item value="nums1"/>
+			<item value="IncomeMaster"/>
+			<item value="incomeViewScreen"/>
+			<item value="setValuestoUpdateIncome"/>
+			<item value="actio"/>
+			<item value="JTextField"/>
+			<item value="Sys"/>
 		</list>
 		<list key="replacehistory">
+			<item value="Expense"/>
+			<item value="expense"/>
+			<item value="Account"/>
+			<item value=""/>
+			<item value="Income"/>
+			<item value="account"/>
+			<item value="accountModelSummary"/>
+			<item value="lstAccountSummary"/>
+			<item value="nums"/>
+			<item value="AccountTran"/>
+			<item value="CommonValues.screenHeight"/>
+			<item value="CommonValues.screenwidth"/>
+			<item value="CommonValues."/>
+			<item value="RkButton"/>
+			<item value="RkBu"/>
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
